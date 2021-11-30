@@ -1,0 +1,34 @@
+// TODO: optimize height/width of movie and img to screen size
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  min-height: 30rem;
+
+  img {
+    height: 90%;
+    max-width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.title,
+.rating {
+  margin: 0;
+  font-size: 14px;
+}
+
+.rating {
+  color: yellow;
+}
