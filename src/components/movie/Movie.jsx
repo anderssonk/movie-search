@@ -8,13 +8,13 @@ const Movie = ({ movie }) => {
   } = movie;
 
   return (
-    <div className={Styles.movie}>
-      <img src={image_url} alt={title}></img>
+    <article className={Styles.movie}>
+      <img src={image_url} alt={title} />
       <div className={Styles.info}>
         <h2 className={Styles.title}>{title}</h2>
-        <h4 className={Styles.rating}>{rating}</h4>
+        <p className={Styles.rating}>{rating}</p>
       </div>
-    </div>
+    </article>
   );
 };
 
