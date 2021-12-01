@@ -6,7 +6,7 @@ import SelectedMovie from './components/selectedMovie/SelectedMovie';
 import data from './moviedata.json';
 
 const App = () => {
-  const [chosenMovie, setChosenMovie] = useState('');
+  const [chosenMovie, setChosenMovie] = useState(null);
 
   return (
     <div className="App">

@@ -10,7 +10,7 @@ const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
 
   return (
     <div className="container">
-      <div className="close" onClick={() => setChosenMovie('')}>
+      <div className="close" onClick={() => setChosenMovie()}>
         Close
       </div>
       <h1>{chosenMovie.title}</h1>
