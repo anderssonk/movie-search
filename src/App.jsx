@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './App.scss';
 import MovieGrid from './components/movieGrid/MovieGrid';
 import Movie from './components/movie/Movie';
+import data from './moviedata.json';
 import Spinner from './components/spinner/Spinner';
 import Badge from './components/badge/Badge';
-import data from './moviedata.json';
-import './App.scss';
 
 const App = () => {
   // Properties
