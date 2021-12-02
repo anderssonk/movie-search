@@ -3,6 +3,7 @@ import './App.scss';
 import MovieGrid from './components/movieGrid/MovieGrid';
 import Movie from './components/movie/Movie';
 import SelectedMovie from './components/selectedMovie/SelectedMovie';
+import Search from './components/search/Search';
 import data from './moviedata.json';
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <Search />
         {chosenMovie ? (
           <SelectedMovie chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} />
         ) : (
