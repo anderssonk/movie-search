@@ -1,0 +1,15 @@
+.badge {
+  $size: 5em;
+
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: beige;
+  width: $size;
+  height: $size;
+
+  p {
+    color: black;
+    font-size: 14px; // why our default size is so huge (around 31px?)
+  }
+}
