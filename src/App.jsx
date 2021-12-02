@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Search></Search>
+        <Search/>
         <MovieGrid>
           {data.map((movie, idx) => (
             <Movie movie={movie} key={idx} />
