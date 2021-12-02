@@ -27,9 +27,6 @@ const Search = (props) => {
     // TODO: API request
   }
 
-  console.log('input', input);
-  console.log('redirect', redirect);
-
   return (
     <form className={Styles.search}>
       <input
