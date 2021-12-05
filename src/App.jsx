@@ -12,6 +12,7 @@ const App = () => {
   const [chosenMovie, setChosenMovie] = useState(null);
   const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
   const [showBadge, setShowBadge] = useState(false);
+  const [movies, setMovies] = useState([]);
 
   // Methods
   /**
@@ -37,7 +38,7 @@ const App = () => {
     <SelectedMovie chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} />
   ) : (
     <MovieGrid>
-      {data.map((movie, idx) => (
+      {movies.map((movie, idx) => (
         <Movie movie={movie} key={idx} setChosenMovie={setChosenMovie} />
       ))}
     </MovieGrid>
@@ -46,7 +47,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Search />
+        <Search setMovies={setMovies} status={status} setStatus={setStatus} />
         {status === 0 && <Spinner />}
         {status === 1 && Content}
         {status === 2 && <p>🚨 an error ocurred while searching for results</p>}

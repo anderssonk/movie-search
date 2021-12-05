@@ -2,23 +2,19 @@ import React from 'react';
 import './SelectedMovie.scss';
 
 const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
-  const {
-    title,
-    year,
-    info: { image_url, rating, genres, directors, actors },
-  } = chosenMovie;
+  const { Title, Year, Poster } = chosenMovie;
 
   return (
     <div className="container">
-      <div className="close" onClick={() => setChosenMovie()}>
+      <button className="close" onClick={() => setChosenMovie(null)}>
         Close
-      </div>
-      <h1>{chosenMovie.title}</h1>
+      </button>
+      <h1>{Title}</h1>
       <div className="chosenMovie">
-        <img src={image_url} alt={title} />
+        <img src={Poster} alt={Title} />
         <div className="movieDetails">
-          <p>Year: {year}</p>
-          <p>Rating: {rating}</p>
+          <p>Year: {Year}</p>
+          {/* <p>Rating: {rating}</p>
           <p>
             {genres.length > 1 ? 'Genres:' : 'Genre:'} {genres.join(', ')}
           </p>
@@ -27,7 +23,7 @@ const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
           </p>
           <p>
             {actors.length > 1 ? 'Actors:' : 'Actor:'} {actors.join(', ')}
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
