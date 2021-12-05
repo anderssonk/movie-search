@@ -7,8 +7,8 @@ const Search = ({ status, setStatus, setMovies }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    let inputCopy = input.trim().toLowerCase();
+
+    const inputCopy = input.trim().toLowerCase();
 
     if (inputCopy.length > 0) {
       setStatus(0);
