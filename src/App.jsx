@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './App.scss';
-import MovieGrid from './components/movieGrid/MovieGrid';
-import Movie from './components/movie/Movie';
-import SelectedMovie from './components/selectedMovie/SelectedMovie';
-import Search from './components/search/Search';
-import data from './moviedata.json';
-import Spinner from './components/spinner/Spinner';
+import { useState, useEffect } from 'react';
 import Badge from './components/badge/Badge';
+import Movie from './components/movie/Movie';
+import MovieGrid from './components/movieGrid/MovieGrid';
+import Search from './components/search/Search';
+import SelectedMovie from './components/selectedMovie/SelectedMovie';
+import Spinner from './components/spinner/Spinner';
+import './App.scss';
 
 const App = () => {
   // Properties
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showBadge, setShowBadge] = useState(false);
   const [chosenMovie, setChosenMovie] = useState(null);
+  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+  const [showBadge, setShowBadge] = useState(false);
 
   // Methods
   /**
@@ -30,7 +29,7 @@ const App = () => {
       setShowBadge(true);
     }
 
-    setTimeout(() => setIsLoaded(true), delay);
+    setTimeout(() => setStatus(1), delay);
   }, []);
 
   // Components
@@ -48,7 +47,9 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Search />
-        {!isLoaded ? <Spinner /> : Content}
+        {status === 0 && <Spinner />}
+        {status === 1 && Content}
+        {status === 2 && <p>🚨 an error ocurred while searching for results</p>}
         {showBadge && <Badge setShowBadge={setShowBadge} />}
       </header>
     </div>
