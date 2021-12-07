@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 
 // Project files
 import Badge from 'components/badge/Badge';
+import MovieGrid from 'components/movieGrid/MovieGrid';
 import Search from 'components/search/Search';
-import Content from 'components/content/Content';
+import SelectedMovie from 'components/selectedMovie/SelectedMovie';
+import { useMovie } from 'state/MovieProvider';
 import { useStatus } from 'state/StatusProvider';
 import './App.scss';
 
@@ -13,6 +15,7 @@ export default function App() {
   const [showBadge, setShowBadge] = useState(false);
 
   // Global state
+  const { movieId } = useMovie();
   const { setStatus } = useStatus();
 
   // Methods
@@ -33,7 +36,7 @@ export default function App() {
   return (
     <div className="App">
       <Search />
-      <Content />
+      {movieId ? <SelectedMovie /> : <MovieGrid />}
       {showBadge && <Badge setShowBadge={setShowBadge} />}
     </div>
   );
