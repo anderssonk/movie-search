@@ -11,7 +11,7 @@ import './App.scss';
 export default function App() {
   // Local state
   const [movieId, setMovieId] = useState(null);
-  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+  const [status, setStatus] = useState(0);
   const [showBadge, setShowBadge] = useState(false);
   const [movies, setMovies] = useState([]);
 

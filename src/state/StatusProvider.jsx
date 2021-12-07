@@ -6,8 +6,8 @@ const StatusContext = createContext(null);
 
 export function StatusProvider({ children }) {
   // Local state
-  const [status, setStatus] = useState([]);
-  const [delay, setDelay] = useState(null);
+  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+  const [delay, setDelay] = useState(0);
 
   return (
     <StatusContext.Provider value={{ status, setStatus, delay, setDelay }}>
