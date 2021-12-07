@@ -29,7 +29,7 @@ export default function App() {
     }
 
     setTimeout(() => setStatus(1), delay);
-  }, []);
+  }, [setStatus]);
 
   return (
     <div className="App">

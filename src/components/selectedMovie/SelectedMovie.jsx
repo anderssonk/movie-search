@@ -27,7 +27,7 @@ export default function SelectedMovie() {
       setStatus(1);
     };
     getData();
-  }, [API_KEY, movieId]);
+  }, [API_KEY, movieId, setStatus]);
 
   if (status === 0) return <p>Loading movie details</p>;
 
