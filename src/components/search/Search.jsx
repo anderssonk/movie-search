@@ -2,10 +2,15 @@
 import { useState } from 'react';
 
 // Project files
+import { useStatus } from '../../state/StatusProvider';
 import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
-export default function Search({ setStatus, setMovies }) {
+export default function Search() {
+  // Global state
+  const { setStatus } = useStatus();
+  const { setMovies } = useMovie();
+
   // Local state
   const [input, setInput] = useState('');
 

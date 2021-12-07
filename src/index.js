@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Project files
-import MovieProvider from './state/MovieProvider';
-import StatusProvider from './state/StatusProvider';
+import { MovieProvider } from './state/MovieProvider';
+import { StatusProvider } from './state/StatusProvider';
 import App from './App';
 import './index.css';
 

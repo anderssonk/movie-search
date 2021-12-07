@@ -6,14 +6,15 @@ import Badge from './components/badge/Badge';
 import Search from './components/search/Search';
 import Content from './components/content/Content';
 import Spinner from './components/spinner/Spinner';
+import { useStatus } from './state/StatusProvider';
 import './App.scss';
 
 export default function App() {
   // Local state
-  const [movieId, setMovieId] = useState(null);
-  const [status, setStatus] = useState(0);
   const [showBadge, setShowBadge] = useState(false);
-  const [movies, setMovies] = useState([]);
+
+  // Global state
+  const { status, setStatus } = useStatus();
 
   // Methods
   useEffect(() => {
@@ -32,9 +33,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <Search setMovies={setMovies} status={status} setStatus={setStatus} />
+      <Search />
       {status === 0 && <Spinner />}
-      {status === 1 && <Content movieId={movieId} setMovieId={setMovieId} movies={movies} />}
+      {status === 1 && <Content />}
       {showBadge && <Badge setShowBadge={setShowBadge} />}
     </div>
   );

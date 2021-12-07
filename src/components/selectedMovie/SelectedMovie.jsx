@@ -1,10 +1,17 @@
-// Project files
+// NPM packages
 import { useState, useEffect } from 'react';
+
+// Project files
+import { useStatus } from '../../state/StatusProvider';
+import { useMovie } from '../../state/MovieProvider';
 import Styles from './SelectedMovie.module.scss';
 
-export default function SelectedMovie({ movieId, setMovieId }) {
+export default function SelectedMovie() {
+  // Global state
+  const { status, setStatus } = useStatus();
+  const { movieId, setMovieId } = useMovie();
+
   // Local state
-  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
   const [movie, setMovie] = useState();
 
   // Properties

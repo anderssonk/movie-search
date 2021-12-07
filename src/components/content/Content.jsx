@@ -1,11 +1,11 @@
 // Project files
+import { useMovie } from '../../state/MovieProvider';
 import MovieGrid from '../movieGrid/MovieGrid';
 import SelectedMovie from '../selectedMovie/SelectedMovie';
 
-export default function Content({ movieId, setMovieId, movies }) {
-  // Components
-  const MovieDetails = <SelectedMovie movieId={movieId} setMovieId={setMovieId} />;
-  const MovieList = <MovieGrid movies={movies} setMovieId={setMovieId}></MovieGrid>;
+export default function Content() {
+  // Global state
+  const { movieId } = useMovie();
 
-  return movieId ? MovieDetails : MovieList;
+  return movieId ? <SelectedMovie /> : <MovieGrid />;
 }
