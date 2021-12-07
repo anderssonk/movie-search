@@ -48,11 +48,16 @@
   border: none;
   outline: none;
   cursor: pointer;
+  color: $color-blue;
 }
 
-.search button img {
-  width: $space-medium;
-  height: $space-medium;
+.search button:hover {
+  color: darken($color-blue, 10%);
+}
+
+.search button svg {
+  width: 18px;
+  height: auto;
 }
 
 @media (min-width: $media-desktop) {
@@ -69,5 +74,9 @@
 
   .search .form {
     padding: $space-ultra $space-big;
+  }
+
+  .search button svg {
+    width: 21px;
   }
 }

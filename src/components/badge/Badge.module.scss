@@ -1,14 +1,47 @@
-.badge {
-  $size: 5em;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  background-color: beige;
-  width: $size;
-  height: $size;
+@import '../../variables.scss';
 
-  p {
-    color: black;
-    font-size: 14px;
+.badge {
+  position: absolute;
+  top: $space-big;
+  right: $space-big;
+  left: $space-big;
+
+  display: flex;
+  align-items: center;
+  height: $height;
+
+  background-color: $color-yellow;
+  border-radius: $space-small;
+  color: $color-gray;
+  overflow: hidden;
+
+  small {
+    display: inline-block;
+    width: calc(100% - $height);
+    padding: 0 $space-small;
+  }
+
+  button {
+    float: right;
+    width: $height;
+    height: 100%;
+    padding: 0;
+    background-color: $color-gray;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    color: $color-yellow;
+  }
+
+  svg {
+    width: $space-big;
+    height: $space-big;
+  }
+}
+
+@media (min-width: $media-desktop) {
+  .badge {
+    left: unset;
+    max-width: $width-container;
   }
 }

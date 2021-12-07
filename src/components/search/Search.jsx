@@ -5,7 +5,7 @@ import { useState } from 'react';
 import forceDelay from 'scripts/forceDelay';
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
-import SearchIcon from './search-icon.svg';
+import { ReactComponent as SearchIcon } from './search-solid.svg';
 import Styles from './Search.module.scss';
 
 export default function Search() {
@@ -61,7 +61,7 @@ export default function Search() {
           autoFocus
         />
         <button type="submit">
-          <img src={SearchIcon} alt="search icon" />
+          <SearchIcon />
         </button>
       </form>
     </section>
