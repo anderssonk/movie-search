@@ -14,7 +14,7 @@ export default function Search() {
   const { setStatus, delaySearch } = useStatus();
 
   // Local state
-  const [input, setInput] = useState('batman'); // Refactor: remove after testing
+  const [input, setInput] = useState(''); // Refactor: remove after testing
 
   // Properties
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
