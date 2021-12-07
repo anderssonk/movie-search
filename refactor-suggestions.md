@@ -42,10 +42,10 @@ Keep the CSS modules as is a great styling option but only use it at the top lev
 .movie {
     background-color: black;
 }
-.movie .title {
+.movie h2 {
     color: red;
 }
-.movie .description {
+.movie p {
     color: blue;
 }
 ```
