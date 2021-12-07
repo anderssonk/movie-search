@@ -24,15 +24,23 @@ export default function Search() {
     event.preventDefault();
     const query = input.trim().toLowerCase();
     setStatus(0);
+    setInput('');
 
     const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const result = await request.json();
+    await forceDelay(delaySearch);
     console.log(result);
 
-    await forceDelay(delaySearch);
-    setMovies(result.Search);
+    result.Response === 'True' ? onSucess(result.Search) : onFailure();
+  }
+
+  function onSucess(result) {
+    setMovies(result);
     setStatus(1);
-    setInput('');
+  }
+
+  function onFailure() {
+    setStatus(2);
   }
 
   return (

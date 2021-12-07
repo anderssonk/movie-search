@@ -16,6 +16,7 @@ export default function MovieGrid() {
   ));
 
   if (status === 0) return <Spinner />;
+  if (status === 2) return <p>🚨 No movies found. Please try again</p>;
 
   return <section className={Styles.movieGrid}>{Movies}</section>;
 }

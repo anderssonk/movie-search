@@ -24,8 +24,8 @@ export default function SelectedMovie() {
     const getData = async () => {
       const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
-
       await forceDelay(delayDetails);
+
       setMovie(result);
       setStatus(1);
     };
