@@ -30,7 +30,7 @@ export default function SelectedMovie() {
       setStatus(1);
     };
     getData();
-  }, [API_KEY, movieId, setStatus]);
+  }, [API_KEY, movieId, setStatus, delayDetails]);
 
   if (status === 0) return <Spinner />;
 
