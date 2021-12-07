@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Project files
+import Spinner from 'components/spinner/Spinner';
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
 import Styles from './SelectedMovie.module.scss';
@@ -11,7 +12,6 @@ export default function SelectedMovie() {
   const { status, setStatus } = useStatus();
   const { movieId, setMovieId } = useMovie();
 
-  setStatus(0);
   console.log('status', status);
   console.log('movieId', movieId);
 
@@ -33,6 +33,8 @@ export default function SelectedMovie() {
     };
     getData();
   }, [API_KEY, movieId, setStatus]);
+
+  if (status === 0) return <Spinner />;
 
   return (
     <section className={Styles.selectedMovie}>

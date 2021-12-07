@@ -12,8 +12,8 @@ export default function Movie({ movie }) {
 
   // Methods
   function clickHanlder(id) {
-    setMovieId(id);
     setStatus(0); // Refactor: i don't feel confortable with this hook here
+    setMovieId(id);
   }
 
   return (

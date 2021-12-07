@@ -4,7 +4,7 @@ import { useState } from 'react';
 // Project files
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
-import SearchIcon from 'components/search-icon.svg';
+import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
 export default function Search() {
@@ -13,7 +13,7 @@ export default function Search() {
   const { setMovies } = useMovie();
 
   // Local state
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('batman'); // Refactor: remove after testing
 
   // Properties
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
@@ -38,6 +38,7 @@ export default function Search() {
         value={input}
         onChange={(event) => setInput(event.target.value)}
         required
+        autoFocus
       />
       <button type="submit">
         <img src={SearchIcon} alt="search icon" />

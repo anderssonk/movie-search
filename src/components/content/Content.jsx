@@ -9,3 +9,5 @@ export default function Content() {
 
   return movieId ? <SelectedMovie /> : <MovieGrid />;
 }
+
+// Refactor: This component may die as SelectedMovie and MovieGrid can be on App

@@ -13,7 +13,7 @@ export default function App() {
   const [showBadge, setShowBadge] = useState(false);
 
   // Global state
-  const { status, setStatus } = useStatus();
+  const { setStatus } = useStatus();
 
   // Methods
   useEffect(() => {
