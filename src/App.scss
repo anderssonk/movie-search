@@ -5,12 +5,17 @@ body {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box; // to manage borders and padding in a uniform fashion
+}
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: $space-big;
   background-color: $color-background;
   color: white;
   font-size: 18px; // our mobile default size

@@ -6,6 +6,7 @@ h3,
 p,
 li,
 button,
+input,
 small {
   margin-top: 0; // to control the space from top to bottom instead of in both directions.
   line-height: 1.25;
@@ -25,7 +26,8 @@ h3 {
 
 p,
 li,
-button {
+button,
+input {
   font-size: 18px;
 }
 
@@ -48,7 +50,8 @@ small {
 
   p,
   li,
-  button {
+  button,
+  input {
     font-size: 21px;
   }
 

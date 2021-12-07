@@ -1,39 +1,50 @@
+@import '../../variables.scss';
+
 .search {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  position: relative;
-  box-sizing: border-box;
-  padding: 25px 20px 20px 20px;
+  border-radius: $space-big;
+  background-color: $color-navy;
+  overflow: hidden; // to clip the form rounded corners
+}
+
+.search header {
+  padding: $space-big;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.search form {
+  background-color: $color-blue;
+  padding: $space-big;
 }
 
 .search input {
-  border: 4px solid #111d5e;
-  margin-right: 5px;
-  border-radius: 10px 10px 10px 10px;
-  width: 100%;
-  height: 2rem;
-  background: #f5f5f5;
-  outline: none;
+  vertical-align: middle;
+  width: calc(100% - $height);
+  height: $height;
+  margin: 0;
+  padding: $space-small $space-medium;
   border: none;
-  border-radius: 1.625rem;
-  padding: 0 3.5rem 0 1.5rem;
-  font-size: 1rem;
+  outline: none;
+  border-radius: $height 0 0 $height;
+}
+
+.search input::placeholder {
+  color: $color-cyan;
 }
 
 .search button {
-  width: 3.5rem;
-  height: 2rem;
-  margin-left: -3.5rem;
-  background: none;
+  width: $height;
+  height: $height;
+  background-color: white;
+  border-radius: 0 $height $height 0;
   border: none;
   outline: none;
   cursor: pointer;
 }
 
 .search button img {
-  width: 18px;
-  height: 18px;
+  width: $space-medium;
+  height: $space-medium;
 }

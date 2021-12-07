@@ -44,17 +44,26 @@ export default function Search() {
   }
 
   return (
-    <form className={Styles.search} onSubmit={(event) => submitHandler(event)}>
-      <input
-        placeholder="Search"
-        value={input}
-        onChange={(event) => setInput(event.target.value)}
-        required
-        autoFocus
-      />
-      <button type="submit">
-        <img src={SearchIcon} alt="search icon" />
-      </button>
-    </form>
+    <section className={Styles.search}>
+      <header>
+        <h2>Solarium</h2>
+        <p>
+          Our solar powered database would allow you to search information about your favorite
+          movies.
+        </p>
+      </header>
+      <form onSubmit={(event) => submitHandler(event)}>
+        <input
+          placeholder="Ex: Batman"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          required
+          autoFocus
+        />
+        <button type="submit">
+          <img src={SearchIcon} alt="search icon" />
+        </button>
+      </form>
+    </section>
   );
 }
