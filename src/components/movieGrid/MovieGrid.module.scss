@@ -3,13 +3,13 @@
 .movieGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $space-small;
+  gap: $space-medium;
 }
 
 @media (min-width: $media-desktop) {
   .movieGrid {
     max-width: $width-container;
     grid-template-columns: repeat(4, 1fr);
-    gap: $space-big;
+    gap: $space-medium;
   }
 }

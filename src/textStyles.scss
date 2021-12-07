@@ -35,7 +35,7 @@ small {
   font-size: 14px;
 }
 
-@media (min-size: $media-desktop) {
+@media (min-width: $media-desktop) {
   h1 {
     font-size: 28px;
   }
