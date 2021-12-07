@@ -1,4 +1,15 @@
-.search_input {
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 25px 20px 20px 20px;
+}
+
+.search input {
   border: 4px solid #111d5e;
   margin-right: 5px;
   border-radius: 10px 10px 10px 10px;
@@ -12,30 +23,17 @@
   font-size: 1rem;
 }
 
-.search_btn {
+.search button {
   width: 3.5rem;
   height: 2rem;
   margin-left: -3.5rem;
   background: none;
   border: none;
   outline: none;
-}
-.search_btn:hover {
   cursor: pointer;
 }
 
-.svg_btn {
-  width: 24px;
-  height: 24px;
-}
-
-.search {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  position: relative;
-  box-sizing: border-box;
-  padding: 25px 20px 20px 20px;
+.search button img {
+  width: 18px;
+  height: 18px;
 }
