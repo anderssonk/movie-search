@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 
 // Project files
 import Spinner from 'components/spinner/Spinner';
+import forceDelay from 'scripts/forceDelay';
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
 import Styles from './SelectedMovie.module.scss';
 
 export default function SelectedMovie() {
   // Global state
-  const { status, setStatus } = useStatus();
+  const { status, setStatus, delayDetails } = useStatus();
   const { movieId, setMovieId } = useMovie();
 
   // Local state
@@ -24,6 +25,7 @@ export default function SelectedMovie() {
       const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
 
+      await forceDelay(delayDetails);
       setMovie(result);
       setStatus(1);
     };

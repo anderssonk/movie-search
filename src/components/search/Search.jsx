@@ -2,16 +2,16 @@
 import { useState } from 'react';
 
 // Project files
+import forceDelay from 'scripts/forceDelay';
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
-import timeout from 'scripts/timeout';
 import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
 export default function Search() {
   // Global state
-  const { setStatus } = useStatus();
   const { setMovies } = useMovie();
+  const { setStatus, delaySearch } = useStatus();
 
   // Local state
   const [input, setInput] = useState('batman'); // Refactor: remove after testing
@@ -28,7 +28,7 @@ export default function Search() {
     const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const results = await request.json();
 
-    await timeout(5000);
+    await forceDelay(delaySearch);
     setMovies(results.Search);
     setStatus(1);
     setInput('');
