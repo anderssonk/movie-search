@@ -17,7 +17,7 @@ export function MovieProvider({ children }) {
 }
 
 export function useMovie() {
-  const context = useContext(ModalContext);
+  const context = useContext(MovieContext);
 
   return context;
 }

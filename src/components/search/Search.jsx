@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 // Project files
 import { useStatus } from '../../state/StatusProvider';
+import { useMovie } from '../../state/MovieProvider';
 import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
