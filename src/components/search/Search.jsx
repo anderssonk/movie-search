@@ -26,10 +26,11 @@ export default function Search() {
     setStatus(0);
 
     const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
-    const results = await request.json();
+    const result = await request.json();
+    console.log(resuls);
 
     await forceDelay(delaySearch);
-    setMovies(results.Search);
+    setMovies(result.Search);
     setStatus(1);
     setInput('');
   }
