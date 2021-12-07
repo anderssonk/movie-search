@@ -1,22 +1,20 @@
-// TODO: optimize height/width of movie and img to screen size
+@import '../../variables.scss';
 
 .movie {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  min-height: 30rem;
+  background-color: $color-navy;
+  border-radius: $space-small;
+  overflow: hidden; // to clip the image rounded corners
   cursor: pointer;
 }
-.movie img {
-  height: 90%;
-  max-width: 100%;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+
+.movie:hover {
+  background-color: darken($color-navy, 10%);
 }
 
-.movie h2 {
-  margin: 1rem;
-  font-size: 14px;
+.movie img {
+  aspect-ratio: 9/16; // inverted widescreen
+}
+
+.movie h3 {
+  margin: $space-small $space-medium;
 }

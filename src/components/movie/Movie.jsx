@@ -19,7 +19,7 @@ export default function Movie({ movie }) {
   return (
     <article className={Styles.movie} onClick={() => clickHanlder(imdbID)}>
       <img src={Poster} alt={Title} />
-      <h2>{Title}</h2>
+      <h3>{Title}</h3>
     </article>
   );
 }
