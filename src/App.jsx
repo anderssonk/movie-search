@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import Badge from './components/badge/Badge';
 import Search from './components/search/Search';
 import Content from './components/content/Content';
-import Spinner from './components/spinner/Spinner';
 import { useStatus } from './state/StatusProvider';
 import './App.scss';
 
@@ -34,8 +33,7 @@ export default function App() {
   return (
     <div className="App">
       <Search />
-      {status === 0 && <Spinner />}
-      {status === 1 && <Content />}
+      <Content />
       {showBadge && <Badge setShowBadge={setShowBadge} />}
     </div>
   );

@@ -11,6 +11,10 @@ export default function SelectedMovie() {
   const { status, setStatus } = useStatus();
   const { movieId, setMovieId } = useMovie();
 
+  setStatus(0);
+  console.log('status', status);
+  console.log('movieId', movieId);
+
   // Local state
   const [movie, setMovie] = useState();
 
@@ -22,14 +26,13 @@ export default function SelectedMovie() {
     const getData = async () => {
       const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
+      console.log('result', result);
 
       setMovie(result);
       setStatus(1);
     };
     getData();
   }, [API_KEY, movieId, setStatus]);
-
-  if (status === 0) return <p>Loading movie details</p>;
 
   return (
     <section className={Styles.selectedMovie}>
