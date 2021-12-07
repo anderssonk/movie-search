@@ -35,7 +35,6 @@ export default function App() {
       <Search setMovies={setMovies} status={status} setStatus={setStatus} />
       {status === 0 && <Spinner />}
       {status === 1 && <Content movieId={movieId} setMovieId={setMovieId} movies={movies} />}
-      {status === 2 && <p>🚨 an error ocurred while searching for results</p>}
       {showBadge && <Badge setShowBadge={setShowBadge} />}
     </div>
   );

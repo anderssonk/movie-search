@@ -1,16 +1,13 @@
+// Project files
 import Styles from './Movie.module.scss';
 
-const Movie = ({ movie, setChosenMovie }) => {
+export default function Movie({ movie, setMovieId }) {
   const { imdbID, Title, Poster } = movie;
 
   return (
-    <article className={Styles.movie} onClick={() => setChosenMovie(imdbID)}>
+    <article className={Styles.movie} onClick={() => setMovieId(imdbID)}>
       <img src={Poster} alt={Title} />
-      <div className={Styles.info}>
-        <h2 className={Styles.title}>{Title}</h2>
-      </div>
+      <h2>{Title}</h2>
     </article>
   );
-};
-
-export default Movie;
+}

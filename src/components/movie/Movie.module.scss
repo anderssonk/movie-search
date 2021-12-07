@@ -8,27 +8,15 @@
   border-radius: 1rem;
   min-height: 30rem;
   cursor: pointer;
-
-  img {
-    height: 90%;
-    max-width: 100%;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
+}
+.movie img {
+  height: 90%;
+  max-width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
-.info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.movie h2 {
   margin: 1rem;
-}
-
-.title,
-.rating {
   font-size: 14px;
-}
-
-.rating {
-  color: yellow;
 }

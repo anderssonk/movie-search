@@ -1,4 +1,4 @@
-.container {
+.selectedMovie {
   background-color: rgba(128, 128, 128, 0.685);
   border-radius: 1rem;
   padding: 2rem;
@@ -21,14 +21,6 @@
 
   p {
     margin: 1rem;
-  }
-}
-
-.close {
-  text-align: right;
-
-  &:hover {
-    cursor: pointer;
   }
 }
 
