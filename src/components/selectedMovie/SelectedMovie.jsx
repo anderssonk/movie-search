@@ -4,11 +4,11 @@ import './SelectedMovie.scss';
 const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
   const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
   const [movie, setMovie] = useState();
-  const APIkey = 'bb03afad';
+  const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
   useEffect(() => {
     const getData = async () => {
-      const request = await fetch(`http://www.omdbapi.com/?i=${chosenMovie}&apikey=${APIkey}`);
+      const request = await fetch(`http://www.omdbapi.com/?i=${chosenMovie}&apikey=${API_KEY}`);
       const result = await request.json();
 
       setMovie(result);

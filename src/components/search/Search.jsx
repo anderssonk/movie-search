@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Styles from './Search.module.scss';
 
-const Search = ({ status, setStatus, setMovies }) => {
+const Search = ({ setStatus, setMovies }) => {
   const [input, setInput] = useState('');
-  const APIkey = 'bb03afad';
+  const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const Search = ({ status, setStatus, setMovies }) => {
     if (inputCopy.length > 0) {
       setStatus(0);
 
-      const request = await fetch(`http://www.omdbapi.com/?s=${inputCopy}&apikey=${APIkey}`);
+      const request = await fetch(`http://www.omdbapi.com/?s=${inputCopy}&apikey=${API_KEY}`);
       const results = await request.json();
       setMovies(results.Search);
       setStatus(1);
