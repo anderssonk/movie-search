@@ -33,8 +33,7 @@ const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
           <p>Genre: {movie.Genre}</p>
           <p>Director: {movie.Directors}</p>
           <p>Actors: {movie.Actors}</p>
-          <p>Plot:</p>
-          <p>{movie.Plot}</p>
+          <p>Plot: {movie.Plot}</p>
         </div>
       </div>
     </div>
