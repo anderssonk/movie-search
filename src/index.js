@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import { MovieProvider } from 'state/MovieProvider';
 import { StatusProvider } from 'state/StatusProvider';
 import App from './App';
-import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
