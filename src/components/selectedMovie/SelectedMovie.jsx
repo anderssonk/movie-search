@@ -36,9 +36,8 @@ export default function SelectedMovie() {
 
   return (
     <section className={Styles.selectedMovie}>
-      <button onClick={() => setMovieId(null)}>Close</button>
       <h1>{movie.Title}</h1>
-      <div className={Styles.container}>
+      <div className={Styles.grid}>
         <img src={movie.Poster} alt={movie.Title} />
         <ul>
           <li>Year: {movie.Year}</li>
@@ -49,6 +48,7 @@ export default function SelectedMovie() {
           <li>Plot: {movie.Plot}</li>
         </ul>
       </div>
+      <button onClick={() => setMovieId(null)}>Close</button>
     </section>
   );
 }

@@ -1,28 +1,41 @@
+@import '../../variables.scss';
+
 .selectedMovie {
-  background-color: rgba(128, 128, 128, 0.685);
+  background-color: $color-navy;
   border-radius: 1rem;
-  padding: 2rem;
-  max-width: 60%;
+  padding: $space-big;
   text-align: center;
 
-  h1 {
-    font-weight: lighter;
-    margin: 1rem;
+  button {
+    min-width: 120px;
+    height: $height;
+    padding: $space-medium;
+    font-weight: bold;
+    line-height: 0;
+    border: none;
+    border-radius: $height;
+    outline: none;
+    color: white;
+    background-color: $color-blue;
+    cursor: pointer;
   }
 
-  button {
-    cursor: pointer;
+  button:hover {
+    background-color: darken($color-blue, 10%);
   }
 }
 
-.container {
+.selectedMovie .grid {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column-reverse; // to put the poster below the text
   text-align: left;
+  margin-bottom: $space-medium;
 
   img {
-    padding: 1rem;
-    max-height: 16rem;
+    width: 100%;
+    height: auto;
+    border-radius: $space-small;
+    background-color: red;
   }
 
   ul {
@@ -32,6 +45,20 @@
   }
 
   li {
-    margin: 1rem;
+    margin-bottom: $space-medium;
+  }
+}
+
+@media (min-width: $media-desktop) {
+  .selectedMovie {
+    max-width: $width-container;
+  }
+
+  .selectedMovie .grid {
+    flex-direction: row; // to put the poster on the left
+
+    img {
+      margin-right: $space-big;
+    }
   }
 }
