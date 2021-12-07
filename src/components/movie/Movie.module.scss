@@ -4,6 +4,7 @@
   background-color: $color-navy;
   border-radius: $space-small;
   overflow: hidden; // to clip the image rounded corners
+  aspect-ratio: 9/16; // inverted widescreen
   cursor: pointer;
 }
 
@@ -12,7 +13,8 @@
 }
 
 .movie img {
-  aspect-ratio: 9/16; // inverted widescreen
+  max-width: 100%;
+  height: auto;
 }
 
 .movie h3 {

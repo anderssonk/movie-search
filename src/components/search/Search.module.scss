@@ -54,3 +54,17 @@
   width: $space-medium;
   height: $space-medium;
 }
+
+@media (min-width: $media-desktop) {
+  .search header {
+    padding: $space-ultra $space-big;
+
+    p {
+      max-width: 67%; // 3/4 of the screen for styling purposes
+    }
+  }
+
+  .search .form {
+    padding: $space-ultra $space-big;
+  }
+}
