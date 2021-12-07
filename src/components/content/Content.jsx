@@ -1,17 +1,18 @@
-import Movie from './movie/Movie';
-import MovieGrid from './movieGrid/MovieGrid';
-import SelectedMovie from './selectedMovie/SelectedMovie';
+// Project files
+import Movie from '../movie/Movie';
+import MovieGrid from '../movieGrid/MovieGrid';
+import SelectedMovie from '../selectedMovie/SelectedMovie';
 
-const Content = ({ chosenMovie, setChosenMovie, movies }) => {
+export default function Content({ movieId, setMovieId, movies }) {
   // Components
-  const MovieDetails = <SelectedMovie chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} />;
+  const MovieDetails = <SelectedMovie movieId={movieId} setMovieId={setMovieId} />;
   const MovieList = (
     <MovieGrid>
-      {movies.map((movie, idx) => (
-        <Movie movie={movie} key={idx} setChosenMovie={setChosenMovie} />
+      {movies.map((movie, index) => (
+        <Movie key={index} movie={movie} setMovieId={setMovieId} />
       ))}
     </MovieGrid>
   );
 
   return chosenMovie ? MovieDetails : MovieList;
-};
+}

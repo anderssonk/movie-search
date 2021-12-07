@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import './SelectedMovie.scss';
+// Project files
+import { useState, useEffect } from 'react';
+import Styles from './SelectedMovie.module.scss';
 
-const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
+export default function SelectedMovie({ chosenMovie, setChosenMovie }) {
+  // Local state
   const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
   const [movie, setMovie] = useState();
+
+  // Properties
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
+  // Methods
   useEffect(() => {
     const getData = async () => {
       const request = await fetch(`http://www.omdbapi.com/?i=${chosenMovie}&apikey=${API_KEY}`);
@@ -15,12 +20,12 @@ const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
       setStatus(1);
     };
     getData();
-  }, [chosenMovie]);
+  }, [API_KEY, chosenMovie]);
 
   if (status === 0) return <p>Loading movie details</p>;
 
   return (
-    <div className="container">
+    <section className={Styles.container}>
       <button className="close" onClick={() => setChosenMovie(null)}>
         Close
       </button>
@@ -36,17 +41,6 @@ const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
           <p>Plot: {movie.Plot}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-/**
- * Note:
- * This API does not return actors, directors and genre as arrays but strings.
- *
- * So for the plural titles like Actor vs. Actors,
- * we would need to convert the strings into array before asking if there are 1
- * or multiple items.
- */
-
-export default SelectedMovie;
+}
