@@ -1,6 +1,6 @@
 // Project files
-import { useMovie } from '../../state/MovieProvider';
-import Movie from '../movie/Movie';
+import { useMovie } from 'state/MovieProvider';
+import Movie from 'components/movie/Movie';
 import Styles from './MovieGrid.module.scss';
 
 export default function MovieGrid() {

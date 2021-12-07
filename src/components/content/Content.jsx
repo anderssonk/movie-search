@@ -1,7 +1,7 @@
 // Project files
-import { useMovie } from '../../state/MovieProvider';
-import MovieGrid from '../movieGrid/MovieGrid';
-import SelectedMovie from '../selectedMovie/SelectedMovie';
+import { useMovie } from 'state/MovieProvider';
+import MovieGrid from 'components/movieGrid/MovieGrid';
+import SelectedMovie from 'components/selectedMovie/SelectedMovie';
 
 export default function Content() {
   // Global state

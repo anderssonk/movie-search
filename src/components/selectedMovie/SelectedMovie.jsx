@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 
 // Project files
-import { useStatus } from '../../state/StatusProvider';
-import { useMovie } from '../../state/MovieProvider';
+import { useStatus } from 'state/StatusProvider';
+import { useMovie } from 'state/MovieProvider';
 import Styles from './SelectedMovie.module.scss';
 
 export default function SelectedMovie() {

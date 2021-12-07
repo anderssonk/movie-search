@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 
 // Project files
-import Badge from './components/badge/Badge';
-import Search from './components/search/Search';
-import Content from './components/content/Content';
-import { useStatus } from './state/StatusProvider';
+import Badge from 'components/badge/Badge';
+import Search from 'components/search/Search';
+import Content from 'components/content/Content';
+import { useStatus } from 'state/StatusProvider';
 import './App.scss';
 
 export default function App() {

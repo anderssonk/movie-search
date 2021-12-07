@@ -2,9 +2,9 @@
 import { useState } from 'react';
 
 // Project files
-import { useStatus } from '../../state/StatusProvider';
-import { useMovie } from '../../state/MovieProvider';
-import SearchIcon from './search-icon.svg';
+import { useStatus } from 'state/StatusProvider';
+import { useMovie } from 'state/MovieProvider';
+import SearchIcon from 'components/search-icon.svg';
 import Styles from './Search.module.scss';
 
 export default function Search() {

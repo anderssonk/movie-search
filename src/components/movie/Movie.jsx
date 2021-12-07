@@ -1,6 +1,6 @@
 // Project files
-import { useMovie } from '../../state/MovieProvider';
-import { useStatus } from '../../state/StatusProvider';
+import { useMovie } from 'state/MovieProvider';
+import { useStatus } from 'state/StatusProvider';
 import Styles from './Movie.module.scss';
 
 export default function Movie({ movie }) {
