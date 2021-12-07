@@ -4,6 +4,7 @@ import { useState } from 'react';
 // Project files
 import { useStatus } from 'state/StatusProvider';
 import { useMovie } from 'state/MovieProvider';
+import timeout from 'scripts/timeout';
 import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
@@ -26,6 +27,8 @@ export default function Search() {
 
     const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const results = await request.json();
+
+    await timeout(5000);
     setMovies(results.Search);
     setStatus(1);
     setInput('');

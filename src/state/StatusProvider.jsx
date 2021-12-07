@@ -6,7 +6,7 @@ const StatusContext = createContext(null);
 
 export function StatusProvider({ children }) {
   // Local state
-  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+  const [status, setStatus] = useState(1); // 0 = loading, 1 = ready, 2 = error
   const [delay, setDelay] = useState(0);
 
   return (
