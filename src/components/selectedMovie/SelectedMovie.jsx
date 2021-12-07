@@ -38,16 +38,16 @@ export default function SelectedMovie() {
     <section className={Styles.selectedMovie}>
       <button onClick={() => setMovieId(null)}>Close</button>
       <h1>{movie.Title}</h1>
-      <div className={Styles.chosenMovie}>
+      <div className={Styles.container}>
         <img src={movie.Poster} alt={movie.Title} />
-        <div className={Styles.movieDetails}>
-          <p>Year: {movie.Year}</p>
-          <p>Rating: {movie.imdbRating}</p>
-          <p>Genre: {movie.Genre}</p>
-          <p>Director: {movie.Directors}</p>
-          <p>Actors: {movie.Actors}</p>
-          <p>Plot: {movie.Plot}</p>
-        </div>
+        <ul>
+          <li>Year: {movie.Year}</li>
+          <li>Rating: {movie.imdbRating}</li>
+          <li>Genre: {movie.Genre}</li>
+          <li>Director: {movie.Directors}</li>
+          <li>Actors: {movie.Actors}</li>
+          <li>Plot: {movie.Plot}</li>
+        </ul>
       </div>
     </section>
   );
