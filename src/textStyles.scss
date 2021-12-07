@@ -1,0 +1,58 @@
+@import './variables.scss';
+
+h1,
+h2,
+h3,
+p,
+li,
+button,
+small {
+  margin-top: 0; // to control the space from top to bottom instead of in both directions.
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+p,
+li,
+button {
+  font-size: 18px;
+}
+
+small {
+  font-size: 14px;
+}
+
+@media (min-size: $media-desktop) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p,
+  li,
+  button {
+    font-size: 21px;
+  }
+
+  small {
+    font-size: 18px;
+  }
+}
