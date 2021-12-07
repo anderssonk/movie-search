@@ -1,6 +1,7 @@
 @import '../../variables.scss';
 
 .search {
+  margin-bottom: $space-big;
   border-radius: $space-big;
   background-color: $color-navy;
   overflow: hidden; // to clip the form rounded corners

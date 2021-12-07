@@ -1,5 +1,14 @@
+@import '../../variables.scss';
+
 .movieGrid {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-small;
+}
+
+@media (min-width: $media-desktop) {
+  .movieGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-big;
+  }
 }
