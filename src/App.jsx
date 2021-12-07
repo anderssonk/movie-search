@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import Badge from './components/badge/Badge';
-import Movie from './components/movie/Movie';
-import MovieGrid from './components/movieGrid/MovieGrid';
 import Search from './components/search/Search';
-import SelectedMovie from './components/selectedMovie/SelectedMovie';
+import Content from './components/content/Content';
 import Spinner from './components/spinner/Spinner';
 import './App.scss';
 
@@ -15,10 +13,6 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
   // Methods
-  /**
-   * Note:
-   * This needs to be inside <Search/> because is part of the fetching code.
-   */
   useEffect(() => {
     const hash = window.location.hash;
     let delay = 0;
@@ -33,23 +27,14 @@ const App = () => {
     setTimeout(() => setStatus(1), delay);
   }, []);
 
-  // Components
-  const Content = chosenMovie ? (
-    <SelectedMovie chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} />
-  ) : (
-    <MovieGrid>
-      {movies.map((movie, idx) => (
-        <Movie movie={movie} key={idx} setChosenMovie={setChosenMovie} />
-      ))}
-    </MovieGrid>
-  );
-
   return (
     <div className="App">
       <header className="App-header">
         <Search setMovies={setMovies} status={status} setStatus={setStatus} />
         {status === 0 && <Spinner />}
-        {status === 1 && Content}
+        {status === 1 && (
+          <Content chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} movies={movies} />
+        )}
         {status === 2 && <p>🚨 an error ocurred while searching for results</p>}
         {showBadge && <Badge setShowBadge={setShowBadge} />}
       </header>
