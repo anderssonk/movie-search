@@ -1,34 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Styles from './Search.module.scss';
 
-const Search = (props) => {
+const Search = ({ setStatus, setMovies }) => {
   const [input, setInput] = useState('');
-  const [redirect, setRedirect] = useState(false);
+  const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    let inputCopy = input.trim().toLowerCase();
+
+    const inputCopy = input.trim().toLowerCase();
 
     if (inputCopy.length > 0) {
-      setRedirect(true);
+      setStatus(0);
+
+      const request = await fetch(`http://www.omdbapi.com/?s=${inputCopy}&apikey=${API_KEY}`);
+      const results = await request.json();
+      setMovies(results.Search);
+      setStatus(1);
     } else {
       setInput('');
     }
   };
 
-  useEffect(() => {
-    return () => {
-      setRedirect(false);
-    };
-  }, [redirect]);
-
-  if (redirect) {
-    // TODO: API request
-  }
-
   return (
-    <form className={Styles.search}>
+    <form className={Styles.search} onSubmit={(e) => submitHandler(e)}>
       <input
         placeholder="Search"
         type="text"
@@ -36,7 +31,7 @@ const Search = (props) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       ></input>
-      <button type="button" className={Styles.search_btn} onClick={(e) => submitHandler(e)}>
+      <button type="submit" className={Styles.search_btn}>
         <svg className={Styles.svg_btn} viewBox="0 0 24 24">
           <path
             fill="#666666"
