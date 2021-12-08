@@ -18,6 +18,9 @@ export default function App() {
   const { movieId } = useMovie();
   const { setDelaySearch, setDelayDetails } = useStatus();
 
+  // Properties
+  const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+
   // Methods
   useEffect(() => {
     const URLParams = new URLSearchParams(window.location.search);
@@ -29,6 +32,8 @@ export default function App() {
     setDelayDetails(delayDetails);
     setShowBadge(showBadge);
   }, [setDelaySearch, setDelayDetails]);
+
+  if (!API_KEY) return <div>🚨 Please add the enviroment key before opening the project</div>;
 
   return (
     <div className="App">
