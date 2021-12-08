@@ -32,24 +32,33 @@ export default function SelectedMovie() {
     getData();
   }, [API_KEY, movieId, setStatus, delayDetails]);
 
-  if (status === 0) return <Spinner />;
-
   return (
-    <section className={Styles.selectedMovie}>
-      <button onClick={() => setMovieId(null)}>Close</button>
-      <h1>{movie.Title}</h1>
-      <div className={Styles.container}>
-        <img src={movie.Poster} alt={movie.Title} />
-        <ul>
-          <li>Year: {movie.Year}</li>
-          <li>Rating: {movie.imdbRating}</li>
-          <li>Genre: {movie.Genre}</li>
-          {movie.Directors ?
-          <li>Directors: {movie.Directors}</li> : <li>Director: {movie.Director}</li>}
-          <li>Actors: {movie.Actors}</li>
-          <li>Plot: {movie.Plot}</li>
-        </ul>
-      </div>
-    </section>
+    <div className={Styles.movieContainer}>
+      {status === 0 ? (
+        <Spinner />
+      ) : (
+        <section className={Styles.movieCard}>
+          <button className={Styles.closeButton} onClick={() => setMovieId(null)} title="Close">
+            &#10005;
+          </button>
+          <img src={movie.Poster} alt={movie.Title} />
+          <div className={Styles.movieInfo}>
+            <div>
+              <h1>{movie.Title}</h1>
+              <p>Year: {movie.Year}</p>
+              <p>Rating: {movie.imdbRating}</p>
+              <p>Genre: {movie.Genre}</p>
+              {movie.Directors ? (
+                <p>Directors: {movie.Directors}</p>
+              ) : (
+                <p>Director: {movie.Director}</p>
+              )}
+              <p>Actors: {movie.Actors}</p>
+              <p>Plot: {movie.Plot}</p>
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

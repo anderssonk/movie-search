@@ -1,14 +1,9 @@
 .badge {
-  $size: 5em;
-  position: absolute;
-  top: 1em;
-  right: 1em;
   background-color: beige;
-  width: $size;
-  height: $size;
+  padding: 2rem;
 
   p {
-    color: black;
-    font-size: 14px;
+    font-size: 18px;
+    text-align: center;
   }
 }

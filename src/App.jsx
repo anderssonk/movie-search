@@ -37,9 +37,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <Search />
-      {movieId ? <SelectedMovie /> : <MovieGrid />}
-      {showBadge && <Badge setShowBadge={setShowBadge} />}
+      {showBadge && <Badge />}
+      <header className="App-header">
+        <Search />
+        <MovieGrid />
+        {movieId && <SelectedMovie />}
+      </header>
     </div>
   );
 }
