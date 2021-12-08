@@ -33,7 +33,7 @@ export default function App() {
     setShowBadge(showBadge);
   }, [setDelaySearch, setDelayDetails]);
 
-  if (!API_KEY) return <div>🚨 Please add the enviroment key before opening the project</div>;
+  if (!API_KEY) return <div>🚨 Add the API key before opening the project</div>;
 
   return (
     <div className="App">
