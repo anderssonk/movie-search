@@ -21,6 +21,21 @@ export default function SelectedMovie() {
 
   // Methods
   useEffect(() => {
+    const close = (e) => {
+      const card = document.getElementById('movie-card');
+      const container = document.getElementById('movie-container');
+
+      if (!(card === e.target) && e.target === container) {
+        setMovieId(null);
+      }
+    };
+    window.addEventListener('click', close);
+    return () => {
+      window.removeEventListener('click', close);
+    };
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
@@ -33,11 +48,11 @@ export default function SelectedMovie() {
   }, [API_KEY, movieId, setStatus, delayDetails]);
 
   return (
-    <div className={Styles.movieContainer}>
+    <div className={Styles.movieContainer} id="movie-container">
       {status === 0 ? (
         <Spinner />
       ) : (
-        <section className={Styles.movieCard}>
+        <section className={Styles.movieCard} id="movie-card">
           <button className={Styles.closeButton} onClick={() => setMovieId(null)} title="Close">
             &#10005;
           </button>

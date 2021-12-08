@@ -1,7 +1,19 @@
-.selectedMovie {
-  background-color: rgba(128, 128, 128, 0.685);
-  border-radius: 1rem;
-  padding: 2rem;
+.movieContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.movieCard {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: #282c34;
+  border-radius: 0.5rem;
   max-width: 60%;
   text-align: center;
 
