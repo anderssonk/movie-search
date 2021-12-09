@@ -11,7 +11,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   color: white;
   padding: 0rem 8rem;
+}
+
+.App-searchbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+
+  p {
+    font-size: 13px;
+    font-weight: lighter;
+    margin: 0;
+    color: #7c818d;
+  }
 }

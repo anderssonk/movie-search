@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 // Project files
 import Badge from 'components/badge/Badge';
+import Logo from './components/logo/Logo';
 import MovieGrid from 'components/movieGrid/MovieGrid';
 import Search from 'components/search/Search';
 import SelectedMovie from 'components/selectedMovie/SelectedMovie';
@@ -39,7 +40,11 @@ export default function App() {
     <div className="App">
       {showBadge && <Badge />}
       <header className="App-header">
-        <Search />
+        <div className="App-searchbar">
+          <Logo />
+          <Search />
+          <p>We've got information about your favourite movies!</p>
+        </div>
         <MovieGrid />
         {movieId && <SelectedMovie />}
       </header>
