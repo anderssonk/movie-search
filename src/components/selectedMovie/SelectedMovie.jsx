@@ -44,7 +44,8 @@ export default function SelectedMovie() {
           <li>Year: {movie.Year}</li>
           <li>Rating: {movie.imdbRating}</li>
           <li>Genre: {movie.Genre}</li>
-          <li>Director: {movie.Directors}</li>
+          {movie.Directors ?
+          <li>Directors: {movie.Directors}</li> : <li>Director: {movie.Director}</li>}
           <li>Actors: {movie.Actors}</li>
           <li>Plot: {movie.Plot}</li>
         </ul>
