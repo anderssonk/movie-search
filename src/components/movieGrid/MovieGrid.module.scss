@@ -1,6 +1,18 @@
 .movieGrid {
+  width: 100%;
   display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   margin: 0 0 3rem;
+}
+
+// TODO: make separate component
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  min-height: 20rem;
+  width: 100%;
 }

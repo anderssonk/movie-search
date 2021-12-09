@@ -16,7 +16,9 @@ export default function App() {
   const [showBadge, setShowBadge] = useState(false);
 
   // Global state
-  const { movieId } = useMovie();
+  const { movieId, movies } = useMovie();
+  const { status } = useStatus();
+
   const { setDelaySearch, setDelayDetails } = useStatus();
 
   // Properties
@@ -43,7 +45,9 @@ export default function App() {
         <div className="App-searchbar">
           <Logo />
           <Search />
-          <p>We've got information about your favourite movies!</p>
+          {!movies.length && status === 1 && (
+            <p>We've got information about your favourite movies!</p>
+          )}
         </div>
         <MovieGrid />
         {movieId && <SelectedMovie />}

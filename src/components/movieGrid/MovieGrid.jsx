@@ -15,8 +15,14 @@ export default function MovieGrid() {
     <Movie key={index} movie={movie} setMovieId={setMovieId} />
   ));
 
-  if (status === 0) return <Spinner />;
+  // TODO: make separate component
+  const Placeholders = [...Array(10)].map(() => (
+    <div className={Styles.placeholder}>
+      <Spinner />
+    </div>
+  ));
+
   if (status === 2) return <p>🚨 No movies found. Please try again</p>;
 
-  return <section className={Styles.movieGrid}>{Movies}</section>;
+  return <section className={Styles.movieGrid}>{status === 0 ? Placeholders : Movies}</section>;
 }

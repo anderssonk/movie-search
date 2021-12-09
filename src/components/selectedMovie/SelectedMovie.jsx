@@ -49,31 +49,35 @@ export default function SelectedMovie() {
 
   return (
     <div className={Styles.movieContainer} id="movie-container">
-      {status === 0 ? (
-        <Spinner />
-      ) : (
-        <section className={Styles.movieCard} id="movie-card">
-          <button className={Styles.closeButton} onClick={() => setMovieId(null)} title="Close">
-            &#10005;
-          </button>
-          <img src={movie.Poster} alt={movie.Title} />
-          <div className={Styles.movieInfo}>
-            <div>
-              <h1>{movie.Title}</h1>
-              <p>Year: {movie.Year}</p>
-              <p>Rating: {movie.imdbRating}</p>
-              <p>Genre: {movie.Genre}</p>
-              {movie.Directors ? (
-                <p>Directors: {movie.Directors}</p>
-              ) : (
-                <p>Director: {movie.Director}</p>
-              )}
-              <p>Actors: {movie.Actors}</p>
-              <p>Plot: {movie.Plot}</p>
-            </div>
+      <section className={Styles.movieCard} id="movie-card">
+        <button className={Styles.closeButton} onClick={() => setMovieId(null)} title="Close">
+          &#10005;
+        </button>
+        {status === 0 ? (
+          <div className={Styles.loading}>
+            <Spinner />
           </div>
-        </section>
-      )}
+        ) : (
+          <>
+            <img src={movie.Poster} alt={movie.Title} />
+            <div className={Styles.movieInfo}>
+              <div>
+                <h1>{movie.Title}</h1>
+                <p>Year: {movie.Year}</p>
+                <p>Rating: {movie.imdbRating}</p>
+                <p>Genre: {movie.Genre}</p>
+                {movie.Directors ? (
+                  <p>Directors: {movie.Directors}</p>
+                ) : (
+                  <p>Director: {movie.Director}</p>
+                )}
+                <p>Actors: {movie.Actors}</p>
+                <p>Plot: {movie.Plot}</p>
+              </div>
+            </div>
+          </>
+        )}
+      </section>
     </div>
   );
 }
