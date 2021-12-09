@@ -46,11 +46,8 @@ export default function Search() {
   return (
     <section className={Styles.search}>
       <header>
-        <h2>Solarium</h2>
-        <p>
-          Our solar powered database would allow you to search information about your favorite
-          movies.
-        </p>
+        <h2>M🔍vies</h2>
+        <p>Search information about your favorite movies.</p>
       </header>
       <form onSubmit={(event) => submitHandler(event)}>
         <input

@@ -62,7 +62,7 @@
 
 @media (min-width: $media-desktop) {
   .search {
-    max-width: $width-container;
+    width: $width-container;
   }
   .search header {
     padding: $space-ultra $space-big;
