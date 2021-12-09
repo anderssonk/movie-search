@@ -21,6 +21,21 @@ export default function SelectedMovie() {
 
   // Methods
   useEffect(() => {
+    const close = (e) => {
+      const card = document.getElementById('movie-card');
+      const container = document.getElementById('movie-container');
+
+      if (!(card === e.target) && e.target === container) {
+        setMovieId(null);
+      }
+    };
+    window.addEventListener('click', close);
+    return () => {
+      window.removeEventListener('click', close);
+    };
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
@@ -32,24 +47,37 @@ export default function SelectedMovie() {
     getData();
   }, [API_KEY, movieId, setStatus, delayDetails]);
 
-  if (status === 0) return <Spinner />;
-
   return (
-    <section className={Styles.selectedMovie}>
-      <button onClick={() => setMovieId(null)}>Close</button>
-      <h1>{movie.Title}</h1>
-      <div className={Styles.container}>
-        <img src={movie.Poster} alt={movie.Title} />
-        <ul>
-          <li>Year: {movie.Year}</li>
-          <li>Rating: {movie.imdbRating}</li>
-          <li>Genre: {movie.Genre}</li>
-          {movie.Directors ?
-          <li>Directors: {movie.Directors}</li> : <li>Director: {movie.Director}</li>}
-          <li>Actors: {movie.Actors}</li>
-          <li>Plot: {movie.Plot}</li>
-        </ul>
-      </div>
-    </section>
+    <div className={Styles.movieContainer} id="movie-container">
+      <section className={Styles.movieCard} id="movie-card">
+        <button className={Styles.closeButton} onClick={() => setMovieId(null)} title="Close">
+          &#10005;
+        </button>
+        {status === 0 ? (
+          <div className={Styles.loading}>
+            <Spinner />
+          </div>
+        ) : (
+          <>
+            <img src={movie.Poster} alt={movie.Title} />
+            <div className={Styles.movieInfo}>
+              <div>
+                <h1>{movie.Title}</h1>
+                <p>Year: {movie.Year}</p>
+                <p>Rating: {movie.imdbRating}</p>
+                <p>Genre: {movie.Genre}</p>
+                {movie.Directors ? (
+                  <p>Directors: {movie.Directors}</p>
+                ) : (
+                  <p>Director: {movie.Director}</p>
+                )}
+                <p>Actors: {movie.Actors}</p>
+                <p>Plot: {movie.Plot}</p>
+              </div>
+            </div>
+          </>
+        )}
+      </section>
+    </div>
   );
 }

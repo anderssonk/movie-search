@@ -29,7 +29,6 @@ export default function Search() {
     const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const result = await request.json();
     await forceDelay(delaySearch);
-    console.log(result);
 
     result.Response === 'True' ? onSucess(result.Search) : onFailure();
   }

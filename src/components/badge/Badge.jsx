@@ -1,11 +1,15 @@
 // Project files
 import Styles from './Badge.module.scss';
 
-export default function Badge({ setShowBadge }) {
+const Badge = () => {
   return (
     <div className={Styles.badge}>
-      <p>This is a solar powered website</p>
-      <button onClick={() => setShowBadge(false)}>Close</button>
+      <p>
+        This website is solar-powered! It has been designed to use less energy when accessing our
+        content. ☀️
+      </p>
     </div>
   );
-}
+};
+
+export default Badge;
