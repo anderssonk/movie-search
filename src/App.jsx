@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 // Project files
 import Badge from 'components/badge/Badge';
+import Logo from './components/logo/Logo';
 import MovieGrid from 'components/movieGrid/MovieGrid';
 import Search from 'components/search/Search';
 import SelectedMovie from 'components/selectedMovie/SelectedMovie';
@@ -15,7 +16,9 @@ export default function App() {
   const [showBadge, setShowBadge] = useState(false);
 
   // Global state
-  const { movieId } = useMovie();
+  const { movieId, movies } = useMovie();
+  const { status } = useStatus();
+
   const { setDelaySearch, setDelayDetails } = useStatus();
 
   // Properties
@@ -37,9 +40,18 @@ export default function App() {
 
   return (
     <div className="App">
-      <Search />
-      {movieId ? <SelectedMovie /> : <MovieGrid />}
-      {showBadge && <Badge setShowBadge={setShowBadge} />}
+      {showBadge && <Badge />}
+      <header className="App-header">
+        <div className="App-searchbar">
+          <Logo />
+          <Search />
+          {!movies.length && status === 1 && (
+            <p>We've got information about your favourite movies!</p>
+          )}
+        </div>
+        <MovieGrid />
+        {movieId && <SelectedMovie />}
+      </header>
     </div>
   );
 }
