@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Project files
+import ImageBackup from 'assets/no-movie.png';
 import Spinner from 'components/spinner/Spinner';
 import forceDelay from 'scripts/forceDelay';
 import { useStatus } from 'state/StatusProvider';
@@ -59,7 +60,7 @@ export default function SelectedMovie() {
           </div>
         ) : (
           <>
-            <img src={movie.Poster} alt={movie.Title} />
+            <img src={movie.Poster !== 'N/A' ? movie.Poster : ImageBackup} alt={movie.Title} />
             <div className={Styles.movieInfo}>
               <div>
                 <h1>{movie.Title}</h1>
