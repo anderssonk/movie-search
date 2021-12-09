@@ -8,6 +8,7 @@
   cursor: pointer;
 }
 .movie img {
+  object-fit: cover;
   height: 90%;
   max-width: 100%;
   border-top-left-radius: 1rem;
