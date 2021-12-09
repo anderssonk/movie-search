@@ -16,8 +16,8 @@ export default function MovieGrid() {
   ));
 
   // TODO: make separate component
-  const Placeholders = [...Array(10)].map(() => (
-    <div className={Styles.placeholder}>
+  const Placeholders = [...Array(10)].map((_, index) => (
+    <div key={index} className={Styles.placeholder}>
       <Spinner />
     </div>
   ));
