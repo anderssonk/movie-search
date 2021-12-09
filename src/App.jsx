@@ -47,7 +47,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Search setMovies={setMovies} status={status} setStatus={setStatus} />
+        <Search setMovies={setMovies} status={status} setStatus={setStatus} setChosenMovie={setChosenMovie}/>
         {status === 0 && <Spinner />}
         {status === 1 && Content}
         {status === 2 && <p>🚨 an error ocurred while searching for results</p>}

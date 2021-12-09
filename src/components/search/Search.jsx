@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Styles from './Search.module.scss';
 
-const Search = ({ setStatus, setMovies }) => {
+const Search = ({ setStatus, setMovies, setChosenMovie }) => {
   const [input, setInput] = useState('');
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
   const submitHandler = async (e) => {
+    setChosenMovie(null);
     e.preventDefault();
 
     const inputCopy = input.trim().toLowerCase();
