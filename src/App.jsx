@@ -1,60 +1,45 @@
-import { useState, useEffect } from 'react';
-import Badge from './components/badge/Badge';
-import Movie from './components/movie/Movie';
-import MovieGrid from './components/movieGrid/MovieGrid';
-import Search from './components/search/Search';
-import SelectedMovie from './components/selectedMovie/SelectedMovie';
-import Spinner from './components/spinner/Spinner';
-import './App.scss';
+// NPM packages
+import { useEffect, useState } from 'react';
 
-const App = () => {
-  // Properties
-  const [chosenMovie, setChosenMovie] = useState(null);
-  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+// Project files
+import Badge from 'components/badge/Badge';
+import MovieGrid from 'components/movieGrid/MovieGrid';
+import Search from 'components/search/Search';
+import SelectedMovie from 'components/selectedMovie/SelectedMovie';
+import { useMovie } from 'state/MovieProvider';
+import './App.scss';
+import { useStatus } from 'state/StatusProvider';
+
+export default function App() {
+  // Local state
   const [showBadge, setShowBadge] = useState(false);
-  const [movies, setMovies] = useState([]);
+
+  // Global state
+  const { movieId } = useMovie();
+  const { setDelaySearch, setDelayDetails } = useStatus();
+
+  // Properties
+  const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
   // Methods
-  /**
-   * Note:
-   * This needs to be inside <Search/> because is part of the fetching code.
-   */
   useEffect(() => {
-    const hash = window.location.hash;
-    let delay = 0;
+    const URLParams = new URLSearchParams(window.location.search);
+    const delaySearch = URLParams.get('a') || 0;
+    const delayDetails = URLParams.get('b') || 0;
+    const showBadge = URLParams.get('c') || false;
 
-    if (hash === '#alpha') delay = 0;
-    if (hash === '#beta') delay = 1000;
-    if (hash === '#charlie') {
-      delay = 5000;
-      setShowBadge(true);
-    }
+    setDelaySearch(delaySearch);
+    setDelayDetails(delayDetails);
+    setShowBadge(showBadge);
+  }, [setDelaySearch, setDelayDetails]);
 
-    setTimeout(() => setStatus(1), delay);
-  }, []);
-
-  // Components
-  const Content = chosenMovie ? (
-    <SelectedMovie chosenMovie={chosenMovie} setChosenMovie={setChosenMovie} />
-  ) : (
-    <MovieGrid>
-      {movies.map((movie, idx) => (
-        <Movie movie={movie} key={idx} setChosenMovie={setChosenMovie} />
-      ))}
-    </MovieGrid>
-  );
+  if (!API_KEY) return <div>🚨 Add the API key before opening the project</div>;
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Search setMovies={setMovies} status={status} setStatus={setStatus} />
-        {status === 0 && <Spinner />}
-        {status === 1 && Content}
-        {status === 2 && <p>🚨 an error ocurred while searching for results</p>}
-        {showBadge && <Badge setShowBadge={setShowBadge} />}
-      </header>
+      <Search />
+      {movieId ? <SelectedMovie /> : <MovieGrid />}
+      {showBadge && <Badge setShowBadge={setShowBadge} />}
     </div>
   );
-};
-
-export default App;
+}

@@ -1,52 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import './SelectedMovie.scss';
+// NPM packages
+import { useState, useEffect } from 'react';
 
-const SelectedMovie = ({ chosenMovie, setChosenMovie }) => {
-  const [status, setStatus] = useState(0); // 0 = loading, 1 = ready, 2 = error
+// Project files
+import Spinner from 'components/spinner/Spinner';
+import forceDelay from 'scripts/forceDelay';
+import { useStatus } from 'state/StatusProvider';
+import { useMovie } from 'state/MovieProvider';
+import Styles from './SelectedMovie.module.scss';
+
+export default function SelectedMovie() {
+  // Global state
+  const { status, setStatus, delayDetails } = useStatus();
+  const { movieId, setMovieId } = useMovie();
+
+  // Local state
   const [movie, setMovie] = useState();
+
+  // Properties
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
+  // Methods
   useEffect(() => {
     const getData = async () => {
-      const request = await fetch(`http://www.omdbapi.com/?i=${chosenMovie}&apikey=${API_KEY}`);
+      const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
+      await forceDelay(delayDetails);
 
       setMovie(result);
       setStatus(1);
     };
     getData();
-  }, [chosenMovie]);
+  }, [API_KEY, movieId, setStatus, delayDetails]);
 
-  if (status === 0) return <p>Loading movie details</p>;
+  if (status === 0) return <Spinner />;
 
   return (
-    <div className="container">
-      <button className="close" onClick={() => setChosenMovie(null)}>
-        Close
-      </button>
+    <section className={Styles.selectedMovie}>
+      <button onClick={() => setMovieId(null)}>Close</button>
       <h1>{movie.Title}</h1>
-      <div className="chosenMovie">
+      <div className={Styles.container}>
         <img src={movie.Poster} alt={movie.Title} />
-        <div className="movieDetails">
-          <p>Year: {movie.Year}</p>
-          <p>Rating: {movie.imdbRating}</p>
-          <p>Genre: {movie.Genre}</p>
-          <p>Director: {movie.Directors}</p>
-          <p>Actors: {movie.Actors}</p>
-          <p>Plot: {movie.Plot}</p>
-        </div>
+        <ul>
+          <li>Year: {movie.Year}</li>
+          <li>Rating: {movie.imdbRating}</li>
+          <li>Genre: {movie.Genre}</li>
+          <li>Director: {movie.Directors}</li>
+          <li>Actors: {movie.Actors}</li>
+          <li>Plot: {movie.Plot}</li>
+        </ul>
       </div>
-    </div>
+    </section>
   );
-};
-
-/**
- * Note:
- * This API does not return actors, directors and genre as arrays but strings.
- *
- * So for the plural titles like Actor vs. Actors,
- * we would need to convert the strings into array before asking if there are 1
- * or multiple items.
- */
-
-export default SelectedMovie;
+}

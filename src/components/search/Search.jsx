@@ -1,46 +1,60 @@
+// NPM packages
 import { useState } from 'react';
+
+// Project files
+import forceDelay from 'scripts/forceDelay';
+import { useStatus } from 'state/StatusProvider';
+import { useMovie } from 'state/MovieProvider';
+import SearchIcon from './search-icon.svg';
 import Styles from './Search.module.scss';
 
-const Search = ({ setStatus, setMovies }) => {
+export default function Search() {
+  // Global state
+  const { setMovies } = useMovie();
+  const { setStatus, delaySearch } = useStatus();
+
+  // Local state
   const [input, setInput] = useState('');
+
+  // Properties
   const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  // Methods
+  async function submitHandler(event) {
+    event.preventDefault();
+    const query = input.trim().toLowerCase();
+    setStatus(0);
+    setInput('');
 
-    const inputCopy = input.trim().toLowerCase();
+    const request = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
+    const result = await request.json();
+    await forceDelay(delaySearch);
+    console.log(result);
 
-    if (inputCopy.length > 0) {
-      setStatus(0);
+    result.Response === 'True' ? onSucess(result.Search) : onFailure();
+  }
 
-      const request = await fetch(`http://www.omdbapi.com/?s=${inputCopy}&apikey=${API_KEY}`);
-      const results = await request.json();
-      setMovies(results.Search);
-      setStatus(1);
-    } else {
-      setInput('');
-    }
-  };
+  function onSucess(result) {
+    setMovies(result);
+    setStatus(1);
+  }
+
+  function onFailure() {
+    setStatus(2);
+  }
 
   return (
-    <form className={Styles.search} onSubmit={(e) => submitHandler(e)}>
+    <form className={Styles.search} onSubmit={(event) => submitHandler(event)}>
       <input
         placeholder="Search"
-        type="text"
-        className={Styles.search_input}
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-      ></input>
-      <button type="submit" className={Styles.search_btn}>
-        <svg className={Styles.svg_btn} viewBox="0 0 24 24">
-          <path
-            fill="#666666"
-            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
-          />
-        </svg>
+        onChange={(event) => setInput(event.target.value)}
+        required
+        autoFocus
+      />
+      <button type="submit">
+        <img src={SearchIcon} alt="search icon" />
       </button>
     </form>
   );
-};
-
-export default Search;
+}
