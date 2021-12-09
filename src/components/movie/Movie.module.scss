@@ -6,16 +6,16 @@
   border-radius: 1rem;
   min-height: 30rem;
   cursor: pointer;
-}
-.movie img {
-  object-fit: cover;
-  height: 90%;
-  max-width: 100%;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
 
-.movie h2 {
-  margin: 1rem;
-  font-size: 14px;
+  img {
+    object-fit: cover;
+    height: 90%;
+    max-width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  h2 {
+    margin: 1rem;
+    font-size: 14px;
+  }
 }
