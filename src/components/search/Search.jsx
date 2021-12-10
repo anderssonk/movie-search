@@ -28,7 +28,9 @@ export default function Search() {
 
     const request = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const result = await request.json();
-    const onlyMovies = result.Search.filter((item) => item.Type === 'movie'); // remove videogames from the search results
+    const onlyMovies = result.Search
+      ? result.Search.filter((item) => item.Type === 'movie')
+      : result.Search; // remove videogames from the search results
     await forceDelay(delaySearch);
 
     result.Response === 'True' ? onSucess(onlyMovies) : onFailure();

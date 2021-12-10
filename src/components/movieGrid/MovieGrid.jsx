@@ -22,7 +22,17 @@ export default function MovieGrid() {
     </div>
   ));
 
-  if (status === 2) return <p>🚨 No movies found. Please try again</p>;
+  if (status === 2)
+    return (
+      <div className={Styles.noMovies}>
+        <p>🚨 No movies found. Please try again.</p>
+      </div>
+    );
 
-  return <section className={Styles.movieGrid}>{status === 0 ? Placeholders : Movies}</section>;
+  return (
+    <section className={Styles.movieGrid}>
+      {status === 0 && Placeholders}
+      {status === 1 && Movies}
+    </section>
+  );
 }

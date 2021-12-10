@@ -16,3 +16,14 @@
   min-height: 22rem;
   width: 100%;
 }
+
+.noMovies {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    color: #7c818d;
+  }
+}
