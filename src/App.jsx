@@ -29,7 +29,7 @@ export default function App() {
     const URLParams = new URLSearchParams(window.location.search);
     const delaySearch = URLParams.get('a') || 0;
     const delayDetails = URLParams.get('b') || 0;
-    const showBadge = URLParams.get('c') || false;
+    const showBadge = URLParams.get('c') || 0;
 
     setDelaySearch(delaySearch);
     setDelayDetails(delayDetails);
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <div className="App">
-      {showBadge && <Badge />}
+      {showBadge === '1' && <Badge />}
       <header className="App-header">
         <div className="App-searchbar">
           <Logo />
