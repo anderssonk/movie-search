@@ -38,7 +38,7 @@ export default function SelectedMovie() {
 
   useEffect(() => {
     const getData = async () => {
-      const request = await fetch(`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
+      const request = await fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`);
       const result = await request.json();
       await forceDelay(delayDetails);
 
