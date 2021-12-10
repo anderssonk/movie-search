@@ -23,14 +23,20 @@ export default function App() {
 
   // Methods
   useEffect(() => {
-    const URLParams = new URLSearchParams(window.location.search);
+    const URLParams = new URLSearchParams(document.location.search);
     const delaySearch = URLParams.get('a') || 0;
     const delayDetails = URLParams.get('b') || 0;
-    const showBadge = URLParams.get('c') || false;
+    const showBadge = URLParams.get('c') || 0;
 
     setDelaySearch(delaySearch);
     setDelayDetails(delayDetails);
     setShowBadge(showBadge);
+
+    console.log('window.location', document.location);
+    console.log('window.location.search', document.location.search);
+    console.log('URLParams', URLParams);
+    console.log("URLParams.get('c')", URLParams.get('c'));
+    console.log('showBadge', showBadge);
   }, [setDelaySearch, setDelayDetails]);
 
   if (!API_KEY) return <div>🚨 Add the API key before opening the project</div>;
@@ -39,7 +45,7 @@ export default function App() {
     <div className="App">
       <Search />
       {movieId ? <SelectedMovie /> : <MovieGrid />}
-      {showBadge && <Badge setShowBadge={setShowBadge} />}
+      {showBadge === '1' && <Badge setShowBadge={setShowBadge} />}
     </div>
   );
 }
